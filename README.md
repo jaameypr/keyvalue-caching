@@ -25,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
         long defaultTtl = 5000; // 5 seconds
 
-        Cache<String, String> cache = new CacheImpl<>(defaultTtl);
+        KVCache<String, String> cache = new CacheImpl<>(defaultTtl);
         
         // Now you can use the cache instance in your application.
     }
