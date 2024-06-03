@@ -1,5 +1,7 @@
 package boo.jamey.caching;
 
+import java.util.List;
+
 public interface KVCache<K, V> {
 
     V get(K key);
@@ -9,6 +11,8 @@ public interface KVCache<K, V> {
     boolean renew(K key);
     boolean exists(K key);
     void clear();
+
+    List<KVCacheEntry<K, V>> entries();
 
     void addEntryAddedListener(Callback<K, V> callback);
     void addEntryRemovedListener(Callback<K, V> callback);

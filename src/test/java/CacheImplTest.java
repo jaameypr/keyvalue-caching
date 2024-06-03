@@ -113,4 +113,21 @@ public class CacheImplTest {
         assertTrue(wasCalled.get(), "Entry removed listener should be notified when an entry expires.");
     }
 
+    @Test
+    public void testClearRemovesAllEntriesFromCache() {
+        cache.put("key1", "value1");
+        cache.put("key2", "value2");
+        cache.clear();
+
+        assertTrue(cache.entries().isEmpty());
+    }
+
+    @Test
+    public void testEntriesLengthCorrect() {
+        cache.put("key1", "value1");
+        cache.put("key2", "value2");
+
+        assertTrue(cache.entries().size() > 1);
+    }
+
 }

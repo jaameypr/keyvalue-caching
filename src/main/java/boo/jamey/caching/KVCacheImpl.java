@@ -1,5 +1,6 @@
 package boo.jamey.caching;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.*;
@@ -102,6 +103,11 @@ public class KVCacheImpl<K, V> implements KVCache<K, V> {
     @Override
     public void addEntryRemovedListener(Callback<K, V> callback) {
         entryRemovedListeners.add(callback);
+    }
+
+    @Override
+    public List<KVCacheEntry<K, V>> entries() {
+        return Collections.list(store.elements());
     }
 
     private void entryRemoved(KVCacheEntry<K, V> entry) {
